@@ -2,7 +2,7 @@ require 'csv'
 class CsvDb
   class << self
     def convert_save(target_model, csv_data, options = {}, &block)
-      options = {:headers => true, header_converters: :symbol}.merge(options)
+      options = { headers: true, header_converters: :symbol }.merge(options)
       csv_file = csv_data.read
       CSV.parse(csv_file, options) do |row|
         data = row.to_hash

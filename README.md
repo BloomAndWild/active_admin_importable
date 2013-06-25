@@ -2,6 +2,10 @@
 
 CSV imports for Active Admin with one line of code.
 
+My fork includes:
+- fixed acitve_admin dependency issue
+- added a possibility to specify options for CSV.parse
+
 ## Installation
 
 Add this line to your application's Gemfile:

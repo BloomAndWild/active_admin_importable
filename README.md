@@ -3,8 +3,10 @@
 CSV imports for Active Admin with one line of code.
 
 My fork includes:
-- fixed acitve_admin dependency issue
+- fixed active_admin dependency issue
 - added a possibility to specify options for CSV.parse
+- AR transaction wrapping
+- very basic error handling
 
 ## Installation
 

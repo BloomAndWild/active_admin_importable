@@ -12,7 +12,8 @@ module ActiveAdminImportable
       collection_action :import_csv, :method => :post do
         begin
           CsvDb.convert_save(active_admin_config.resource_class, params[:dump][:file], options, &block)
-        rescue @something_went_wrong = true
+        rescue => exception
+          @something_went_wrong = true
         else
           @something_went_wrong = false
         end

@@ -5,7 +5,7 @@ CSV imports for Active Admin with one line of code.
 My fork includes:
 - fixed active_admin dependency issue
 - added a possibility to specify options for CSV.parse
-- AR transaction wrapping
+- AR transaction wrapping (you may need to raise ActiveRecord::Rollback by yourself in your save code though)
 - very basic error handling
 
 ## Installation

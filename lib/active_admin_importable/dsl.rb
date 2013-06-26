@@ -19,7 +19,7 @@ module ActiveAdminImportable
         unless  @something_went_wrong
           redirect_to :action => :index, :notice => "#{active_admin_config.resource_name.to_s} imported successfully!"
         else
-
+          redirect_to :action => :index, :error => "Something went wrong!"
         end
       end
     end

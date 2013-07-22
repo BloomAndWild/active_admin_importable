@@ -9,6 +9,7 @@
          <td>
            <%= f.file_field :file %>
          </td>
+         <%= render partials[:form] if partials.present? && partials[:form].present? %>
        </tr>
        <tr>
          <td>
@@ -20,3 +21,5 @@
 
 
 <% end %>
+
+<%= render partials[:bottom] if partials.present? && partials[:bottom].present? %>

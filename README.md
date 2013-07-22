@@ -4,9 +4,16 @@ CSV imports for Active Admin with one line of code.
 
 My fork includes:
 - fixed active_admin dependency issue
-- added a possibility to specify options for CSV.parse
+- added a possibility to specify options for CSV.parse (example below)
 - AR transaction wrapping (you may need to raise ActiveRecord::Rollback by yourself in your save code though)
 - very basic error handling
+- you can now pass additional hash of options for rendering custom partials, like:
+
+```
+active_admin_importable({:col_sep => ";"}, {:form => "path/partial", :bottom => "path/partial"}) do |model, hash|
+    #stuff
+end
+```
 
 ## Installation
 

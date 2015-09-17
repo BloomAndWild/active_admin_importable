@@ -1,31 +1,37 @@
 <%= form_for :dump, url: { action: "import_csv" }, html: { multipart: true } do |f| %>
-  <table>
-   <tr>
-     <td>
-       <%= label_tag  "dump_file", "Select a CSV File" %>
-       </td>
-     <td>
-       <%= f.file_field :file %>
-     </td>
+  <fieldset class="inputs">
+    <legend>
+      <span>CSV Upload</span>
+    </legend>
+   <ol>
+     <li class="file input required">
+        <%= label_tag  "dump_file", "Select a CSV File" %>
+        <%= f.file_field :file %>
+     </li>
      <%= render partials[:form] if partials.present? && partials[:form].present? %>
-   </tr>
-   <tr>
-     <td>
+   </ol>
+   <ol>
+     <li>
        <%= submit_tag 'Submit' %>
-     </td>
-   </tr>
-  </table>
-  <table>
-  <% columns.each do |column| %>
-    <tr>
-      <% if column.is_a?(Array) %>
-        <td><%= column.first %></td>
-        <td><%= column.last %></td>
-      <% else %>
-        <td><%= column %></td>
-      <% end %>
-    </tr>
+     </li>
+   </ol>
+  </fieldset>
+  <% if columns.any? %>
+    <fieldset class="inputs">
+      <legend>
+        <span>Columns</span>
+      </legend>
+    <% columns.each do |column| %>
+      <ol>
+        <% if column.is_a?(Array) %>
+          <li><%= column.first %></li>
+          <li><%= column.last %></li>
+        <% else %>
+          <li><%= column %></li>
+        <% end %>
+      </ol>
+    <% end %>
+    </fieldset>
   <% end %>
-  </table>
 <% end %>
 <%= render partials[:bottom] if partials.present? && partials[:bottom].present? %>

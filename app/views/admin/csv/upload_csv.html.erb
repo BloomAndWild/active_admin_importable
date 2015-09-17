@@ -1,25 +1,31 @@
-<%= form_for :dump, :url => {:action => "import_csv"}, :html => {:multipart => true} do |f| %>
-
-     <table>
-
-       <tr>
-         <td>
-           <%= label_tag  "dump_file", "Select a CSV File" %>
-           </td>
-         <td>
-           <%= f.file_field :file %>
-         </td>
-         <%= render partials[:form] if partials.present? && partials[:form].present? %>
-       </tr>
-       <tr>
-         <td>
-           <%= submit_tag 'Submit' %>
-         </td>
-       </tr>
-
-     </table>
-
-
+<%= form_for :dump, url: { action: "import_csv" }, html: { multipart: true } do |f| %>
+  <table>
+   <tr>
+     <td>
+       <%= label_tag  "dump_file", "Select a CSV File" %>
+       </td>
+     <td>
+       <%= f.file_field :file %>
+     </td>
+     <%= render partials[:form] if partials.present? && partials[:form].present? %>
+   </tr>
+   <tr>
+     <td>
+       <%= submit_tag 'Submit' %>
+     </td>
+   </tr>
+  </table>
+  <table>
+  <% columns.each do |column| %>
+    <tr>
+      <% if column.is_a?(Array) %>
+        <td><%= column.first %></td>
+        <td><%= column.last %></td>
+      <% else %>
+        <td><%= column %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-
 <%= render partials[:bottom] if partials.present? && partials[:bottom].present? %>

@@ -7,7 +7,7 @@ class CsvDb
       ActiveRecord::Base.transaction do
         CSV.parse(csv_file, options) do |row|
           data = row.to_hash
-          if data.present?
+          if data.present? && data.any?
             if (block_given?)
               block.call(target_model, data)
             else

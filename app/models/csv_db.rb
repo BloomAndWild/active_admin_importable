@@ -1,6 +1,14 @@
 require 'csv'
 class CsvDb
   class << self
+    def convert_save_csv(csv_data, options = {}, &block)
+      options = { headers: true, header_converters: :symbol }.merge(options.except(:columns))
+      csv_file = csv_data.read
+      ActiveRecord::Base.transaction do
+        block.call(CSV.parse(csv_file, options))
+      end
+    end
+
     def convert_save(target_model, csv_data, options = {}, &block)
       options = { headers: true, header_converters: :symbol }.merge(options.except(:columns))
       csv_file = csv_data.read
